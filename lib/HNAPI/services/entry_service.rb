@@ -10,7 +10,8 @@ class EntryService
       (lines.length / 2).times do
         entry_infos << EntryParser.new(lines.shift, lines.shift).parse
       end
-      parser = EntryPageParser.new(agent.get(parser.get_next_url))
+      next_url = parser.get_next_url || break
+      parser = EntryPageParser.new(agent.get(next_url))
     end
     return entry_infos
   end

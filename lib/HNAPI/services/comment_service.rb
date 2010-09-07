@@ -2,11 +2,11 @@
 class CommentService
   include MechanizeContext
 
-  def get_comments(comments_info)
+  def get_comments(page_url)
     comments = []
     last   = comments
     current_level = -1
-    page = agent.get(comments_info.page)
+    page = agent.get(page_url)
     page.search("//table")[3].search("table/tr").select do |tr|
       tr.search("span.comment").inner_html != "[deleted]"
     end.each do |tr|

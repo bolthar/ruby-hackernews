@@ -18,7 +18,7 @@ class Entry
 
   def comments
     unless @comments
-      @comments = CommentService.new.get_comments(@comments_info)
+      @comments = CommentService.new.get_comments(@comments_info.page)
     end
     return @comments
   end

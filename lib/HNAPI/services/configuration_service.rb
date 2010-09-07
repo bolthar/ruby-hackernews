@@ -17,4 +17,8 @@ class ConfigurationService
     return File.join(self.base_url, "jobs")
   end
 
+  def self.comments_url
+    return File.join(self.base_url, "newcomments")
+  end
+
 end

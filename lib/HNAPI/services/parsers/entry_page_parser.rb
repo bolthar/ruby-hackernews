@@ -7,10 +7,11 @@ class EntryPageParser
 
   def get_lines
     lines = @page.search("//table")[2].search("tr").select do |tr|
-      tr['style'] !~ /height/ && 
-      (tr.children.first['class'] || tr.children.first['colspan'])
+      tr['style'] !~ /height/ &&
+      tr.children.first.attributes.count != 0
     end
-    lines.pop unless lines.last.children.first['colspan']
+    more_link = lines.last.search("a").first
+    lines.pop if more_link && more_link.inner_html == "More"
     return lines
   end
 

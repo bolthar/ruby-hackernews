@@ -27,6 +27,18 @@ class Entry
     return EntryService.new.get_entries(pages)
   end
 
+  def self.newest(pages = 1)
+    return EntryService.new.get_new_entries(pages)
+  end
+
+  def self.questions(pages = 1)
+    return EntryService.new.get_questions(pages)
+  end
+
+  def self.jobs(pages = 1)
+    return EntryService.new.get_jobs(pages)
+  end
+
 
 
 end

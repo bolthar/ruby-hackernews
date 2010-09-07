@@ -34,4 +34,8 @@ class Comment
     @children.send(method, *args, &block)
   end
 
+  def self.newest(pages = 1)
+    return CommentService.new.get_new_comments(pages)
+  end
+
 end

@@ -3,6 +3,11 @@
 
 An API over Hacker News
 
+== Requirements
+
+    mechanize (>= 1.0.0)
+    require_all (>= 1.1.0)
+
 == Installation
 
     gem install ruby-hackernews

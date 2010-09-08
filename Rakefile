@@ -8,12 +8,12 @@ require 'rake/rdoctask'
 require 'rake/testtask'
 
 spec = Gem::Specification.new do |s|
-  s.name = 'ruby-HNAPI'
+  s.name = 'ruby-hackernews'
   s.version = '1.0.0'
   s.add_dependency('require_all', '>= 1.1.0')
   s.add_dependency('mechanize', '>= 1.0.0')
   s.has_rdoc = false
-  s.homepage = "http://github.com/bolthar/ruby-HNAPI"
+  s.homepage = "http://github.com/bolthar/ruby-hackernews"
   s.summary = 'An interface to Hacker News'
   s.description = s.summary
   s.author = 'Andrea Dallera'

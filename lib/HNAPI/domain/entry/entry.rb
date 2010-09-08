@@ -40,10 +40,15 @@ class Entry
   end
 
   def write_comment(text)
-    CommentService.new.write_comment(@comments_info.page, text)
-    return true
+    return CommentService.new.write_comment(@comments_info.page, text)
   end
 
+  def self.submit(*args)
+    return EntryService.new.submit(*args)
+  end
 
+  def upvote
+    return VotingService.new.vote(@voting.upvote)
+  end
 
 end

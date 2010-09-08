@@ -43,20 +43,20 @@ class CommentService
     element.search("span.comment").first.children.each do |ch|
       text = ch.inner_html.gsub(/<.{1,2}>/,"")
     end
-    reply_link = element.search("td[@class='default']/p//u//a").first
-    reply_url = reply_link['href'] if reply_link
     header = element.search("span.comhead").first
-    score = header.search("span").first.inner_html.split[0].to_i
+    voting = VotingInfoParser.new(element.search("td/center/a"), header).parse
     user_info = UserInfoParser.new(header).parse
-    return Comment.new(text, score, user_info, reply_url)
+    reply_link = element.search("td[@class='default']/p//u//a").first
+    reply_url = reply_link['href'] if reply_link       
+    return Comment.new(text, voting, user_info, reply_url)
   end
 
   def write_comment(page_url, comment)
     require_authentication
     form = agent.get(page_url).forms.first
-    p form
     form.text = comment
     form.submit
+    return true
   end
-
+  
 end

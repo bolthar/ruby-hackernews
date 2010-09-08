@@ -21,4 +21,8 @@ class ConfigurationService
     return File.join(self.base_url, "newcomments")
   end
 
+  def self.submit_url
+    return File.join(self.base_url, "submit")
+  end
+
 end

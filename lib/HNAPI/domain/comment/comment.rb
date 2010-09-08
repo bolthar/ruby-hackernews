@@ -3,15 +3,15 @@ class Comment
   include Enumerable
 
   attr_reader :text
-  attr_reader :score
+  attr_reader :voting
   attr_reader :user
 
   attr_accessor :parent
   attr_reader :children
 
-  def initialize(text, score, user_info, reply_link)
+  def initialize(text, voting, user_info, reply_link)
     @text = text
-    @score = score
+    @voting = voting
     @user = user_info
     @reply_link = reply_link
     @children = []
@@ -27,7 +27,7 @@ class Comment
   end
 
   def <=>(other_comment)
-    return other_comment.score <=> @score
+    return other_comment.voting.score <=> @voting.score
   end
 
   def method_missing(method, *args, &block)
@@ -42,6 +42,14 @@ class Comment
     return false unless @reply_link
     CommentService.new.write_comment(@reply_link, text)
     return true
+  end
+
+  def upvote
+    VotingService.new.vote(@voting.upvote)
+  end
+
+  def downvote
+    VotingService.new.vote(@voting.downvote)
   end
 
 end

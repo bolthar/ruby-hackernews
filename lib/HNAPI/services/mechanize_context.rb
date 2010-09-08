@@ -1,10 +1,7 @@
 
 module MechanizeContext
 
-  def self.create(key = :default, agent = Mechanize.new)
-    @@contexts ||= {}
-    @@contexts[key] = agent
-  end
+  @@contexts = {}
 
   def self.agent=(key)
     @@default = key
@@ -12,6 +9,7 @@ module MechanizeContext
 
   def agent
     @@default ||= :default
+    @@contexts[@@default] = Mechanize.new unless @@contexts[@@default]
     return @@contexts[@@default]
   end
 

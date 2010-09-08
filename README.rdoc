@@ -1,0 +1,99 @@
+
+= ruby-hackernews
+
+An API over Hacker News
+
+== Entries
+
+You can get entries on the main page with:
+
+    Entry.all # returns an array of entries
+
+You can provide a number of pages:
+
+    Entry.all(3) # will return the entries on the first 3 pages
+
+There are methods for getting specific entry types:
+
+    Entry.questions # gets the first page of questions (ask NH)
+    Entry.newest    # get the first page of new links (new)
+    Entry.jobs      # get the forst page of job offest (jobs)
+
+Each Entry instance has the following data:
+
+    entry = Entry.all.first #get the top entry on the mainpage
+
+    entry.number       # entry's position on HN
+
+    entry.link.title   # the link's name on HN
+    entry.link.href    # the actual link
+    entry.link.site    # the referring's site, if any
+
+    entry.voting.score # the entry's score on HN
+
+    entry.user.name    # submitter's user name
+
+    entry.time         # elapsed time from submission
+
+After you've logged in (see below) you can do the following
+
+    entry.upvote                     #votes the entry
+    entry.write_comment("mycomment") #adds a comment to the entry
+    Entry.submit("mytitle", "myurl") #submit a new link
+    Entry.submit("myquestion")       #submit a new question (ask HN)
+
+== Comments
+
+You get an entry's comments with:
+
+    entry.comments
+
+You can also get the newest comments on HN with:
+
+    Comments.newest
+    Comments.newest(3)  # get the first 3 pages of new comments
+
+Each Comment instance has the following data:
+
+    comment = Entry.all.first.comments.first # gets the first comment of the first entry on HN's main page
+
+    comment.text           # comment's body
+    comment.user.name      # poster's user name on HN
+    comment.voting.score   # comment's score
+
+Comments are enumerable and threaded, so you can do like:
+
+    comment[2][0]          # gets the third reply to this comment, then the first reply to the reply
+    comment.first          # get the first reply to this comment
+    comment.select do |c|  # gets all the comment replies which text contains "test"
+      text ~= /test/
+    end
+    comment.parent         # gets the comment's parent (nil if no parent)
+
+Once you're logged in (see below), you can do the following:
+
+    comment.upvote
+    comment.downvote
+    comment.reply("mycomment")
+
+== Logging in
+
+You define a user with:
+
+    user = User.new("username")
+
+Then, you log in with:
+
+    user.login("password")
+
+You can log out with:
+
+    user.logout
+
+You have to log out before logging in with a different user.
+
+== TO DO
+
+    Get user info (submission, comments...)
+    Create account
+    Change user info/settings

@@ -16,4 +16,5 @@ class TimeInfo
     @unit_of_measure = self.class.const_get(descriptor.upcase)
   end
 
+
 end

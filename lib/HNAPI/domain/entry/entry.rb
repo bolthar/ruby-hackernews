@@ -5,7 +5,6 @@ class Entry
   attr_reader :link
   attr_reader :voting
   attr_reader :user
-  attr_reader :time
 
   def initialize(number, link, voting, user, comments, time)
     @number   = number
@@ -37,6 +36,10 @@ class Entry
 
   def self.jobs(pages = 1)
     return EntryService.new.get_jobs(pages)
+  end
+
+  def time
+    return @time.time
   end
 
   def write_comment(text)

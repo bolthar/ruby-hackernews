@@ -3,6 +3,16 @@
 
 An API over Hacker News
 
+== Installation
+
+    gem install ruby-hackernews
+
+then, in your script:
+
+    require 'ruby-hackernews'
+
+before using it.
+
 == Entries
 
 You can get entries on the main page with:

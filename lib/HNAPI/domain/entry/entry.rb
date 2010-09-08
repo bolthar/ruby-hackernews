@@ -39,6 +39,11 @@ class Entry
     return EntryService.new.get_jobs(pages)
   end
 
+  def write_comment(text)
+    CommentService.new.write_comment(@comments_info.page, text)
+    return true
+  end
+
 
 
 end

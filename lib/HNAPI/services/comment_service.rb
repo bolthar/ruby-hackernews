@@ -51,9 +51,12 @@ class CommentService
     return Comment.new(text, score, user_info, reply_url)
   end
 
-  def write_comment
+  def write_comment(page_url, comment)
     require_authentication
-    
+    form = agent.get(page_url).forms.first
+    p form
+    form.text = comment
+    form.submit
   end
 
 end

@@ -38,4 +38,10 @@ class Comment
     return CommentService.new.get_new_comments(pages)
   end
 
+  def reply(text)
+    return false unless @reply_link
+    CommentService.new.write_comment(@reply_link, text)
+    return true
+  end
+
 end

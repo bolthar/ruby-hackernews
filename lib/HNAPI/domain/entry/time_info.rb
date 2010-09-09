@@ -7,7 +7,7 @@ class TimeInfo
   DAY    = 24 * HOUR
 
   def time
-    return Time.at(@unit_of_measure * @value)
+    return Time.now - @unit_of_measure * @value
   end
 
   def initialize(value, unit_of_measure)

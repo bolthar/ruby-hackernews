@@ -112,3 +112,7 @@ You have to log out before logging in with a different user.
     Get user info (submission, comments...)
     Create account
     Change user info/settings
+
+== THANKS TO
+
+    - Mike Kelly ( https://github.com/mikekelly ) for fixing a bug in TimeInfo.time

@@ -7,7 +7,6 @@ class Comment
   attr_reader :user
 
   attr_accessor :parent
-  attr_reader :children
 
   def initialize(text, voting, user_info, reply_link)
     @text = text

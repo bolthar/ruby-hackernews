@@ -1,8 +1,12 @@
 
 class ConfigurationService
 
+  def self.base_url=(url)
+    @base_url = url
+  end
+
   def self.base_url
-    return "http://news.ycombinator.com/"
+    return @base_url || "http://news.ycombinator.com/"
   end
 
   def self.new_url

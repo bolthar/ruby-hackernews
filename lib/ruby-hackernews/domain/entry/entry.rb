@@ -42,6 +42,14 @@ class Entry
     return @time.time
   end
 
+  def id
+    return @comments_info.id
+  end
+
+  def comments_count
+    return @comments_info.count
+  end
+
   def write_comment(text)
     return CommentService.new.write_comment(@comments_info.page, text)
   end

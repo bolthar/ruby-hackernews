@@ -9,4 +9,8 @@ class CommentsInfo
     @page  = page
   end
 
+  def id
+    return page[/\d+/]
+  end
+
 end

@@ -117,4 +117,5 @@ You have to log out before logging in with a different user.
 
 - Mike Kelly ( https://github.com/mikekelly ) for fixing a bug in TimeInfo.time
 - Marc Köhlbrugge ( http://github.com/marckohlbrugge ) fox fixing and formatting the documentation
-- Peter Cooper (http://github.com/peterc ) for bug reports 
+- Peter Cooper ( http://github.com/peterc ) for bug reports
+- Peter Boctor ( http://github.com/boctor ) for fixing a bug about authentication

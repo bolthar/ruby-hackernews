@@ -1,4 +1,3 @@
-
 module MechanizeContext
 
   @@contexts = {}
@@ -22,7 +21,7 @@ module MechanizeContext
   end
 
   def authenticated?(key = :default)
-    return @@contexts[key].cookie_jar.jar.any?
+    return @@contexts[key] && @@contexts[key].cookie_jar.jar.any?
   end
 
 end

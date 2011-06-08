@@ -6,8 +6,10 @@ class TimeInfoParser
   end
 
   def parse
-    value           = @element.text.strip.split[0].to_i
-    unit_of_measure = @element.text.strip.split[1]
+    if @element
+      value           = @element.text.strip.split[0].to_i
+      unit_of_measure = @element.text.strip.split[1]
+    end
     return TimeInfo.new(value, unit_of_measure)
   end
 end

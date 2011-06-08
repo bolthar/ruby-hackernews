@@ -10,10 +10,12 @@ class TimeInfo
     return Time.now - @unit_of_measure * @value
   end
 
-  def initialize(value, unit_of_measure)
-    descriptor = unit_of_measure[unit_of_measure.length - 1].chr == "s" ? unit_of_measure[0..unit_of_measure.length - 2] : unit_of_measure
+  def initialize(value, unit_of_measure)    
     @value           = value
-    @unit_of_measure = self.class.const_get(descriptor.upcase)
+    if(unit_of_measure)
+      descriptor = unit_of_measure[unit_of_measure.length - 1].chr == "s" ? unit_of_measure[0..unit_of_measure.length - 2] : unit_of_measure
+      @unit_of_measure = self.class.const_get(descriptor.upcase)
+    end
   end
 
 

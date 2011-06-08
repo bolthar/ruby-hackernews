@@ -9,7 +9,8 @@ class VotingInfoParser
   def parse
     upvote   = @voting_element[0]['href'] if @voting_element[0]
     downvote = @voting_element[1]['href'] if @voting_element[1]
-    score    = @score_element.search("span")[0].inner_html.split[0].to_i
+    points_element = @score_element.search("span")[0]
+    score    = points_element.inner_html.split[0].to_i if points_element
     return VotingInfo.new(score, upvote, downvote)
   end
 end

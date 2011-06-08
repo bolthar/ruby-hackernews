@@ -6,8 +6,11 @@ class UserInfoParser
   end
 
   def parse
-    user_name = @element.search("a")[0].inner_html
-    user_page = @element.search("a")[0]['href']
+    user_element = @element.search("a")[0]
+    if user_element
+      user_name = user_element.inner_html
+      user_page = user_element['href']
+    end
     return UserInfo.new(user_name, user_page)
   end
 end

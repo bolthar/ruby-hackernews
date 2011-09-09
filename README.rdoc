@@ -119,3 +119,4 @@ You have to log out before logging in with a different user.
 - Marc Köhlbrugge ( http://github.com/marckohlbrugge ) fox fixing and formatting the documentation
 - Peter Cooper ( http://github.com/peterc ) for bug reports
 - Peter Boctor ( http://github.com/boctor ) for fixing a bug about authentication
+- Josh Ellington ( http://github.com/joshellington ) for reporting a bug about job entries

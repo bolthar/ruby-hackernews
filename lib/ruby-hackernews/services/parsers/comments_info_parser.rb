@@ -6,7 +6,7 @@ class CommentsInfoParser
 
   def parse
     comments_info = nil
-    if @element
+    if @element && @element['href'] =~ /id/
       comments      = @element.inner_html.split[0].to_i
       comments_page = @element['href']
       comments_info = CommentsInfo.new(comments, comments_page)

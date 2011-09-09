@@ -9,7 +9,7 @@ class CommentsInfo
     @page  = page
   end
 
-  def id
+  def id  
     return page[/\d+/]
   end
 

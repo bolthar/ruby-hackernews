@@ -43,7 +43,7 @@ class Entry
   end
 
   def id
-    return @comments_info.id
+    return @comments_info ? @comments_info.id : nil
   end
 
   def comments_count

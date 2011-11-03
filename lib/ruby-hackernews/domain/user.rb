@@ -19,4 +19,12 @@ class User
     return UserInfoService.new.submissions(@name, pages)
   end
   
+  def saved(pages = 1)
+    return UserInfoService.new.saved(@name, pages)
+  end
+  
+  def comments(pages = 1)
+    return UserInfoService.new.comments(@name, pages)
+  end
+  
 end

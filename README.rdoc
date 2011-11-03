@@ -56,17 +56,23 @@ After you've logged in (see below) you can do the following
     Entry.submit("mytitle", "myurl") # submit a new link
     Entry.submit("myquestion")       # submit a new question (ask HN)
 
+    user.submissions.first.comments_url
+
 == Comments
 
 You get an entry's comments with:
 
     entry.comments
 
-Note that the method above will send a request to HN. If you just need the comments' count, you can instead use:
+Note that the method above will send a request to HN. If you just need the comments' count or url, you can instead use:
 
     entry.comments_count
+    
+and
+  
+    entry.comment_url
 
-Which will not issue a request to HN's site. 
+Either of which will not issue a request to HN's site. 
 
 You can also get the newest comments on HN with:
 
@@ -112,9 +118,19 @@ You can log out with:
 
 You have to log out before logging in with a different user.
 
+You can also get the current users submission list by doing this:
+
+    user.submissions
+    
+This will return a new Entry instance. For example:
+
+    user.submissions.first.comment_url
+    
+Will return the HN comment url of the last submitted story of that user
+
 == TO DO
 
-    Get user info (submission, comments...)
+    Get user info (comments, saved)
     Create account
     Change user info/settings
 

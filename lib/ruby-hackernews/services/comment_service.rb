@@ -24,8 +24,8 @@ class CommentService
     return comments
   end
 
-  def get_new_comments(pages = 1)
-    parser = EntryPageParser.new(agent.get(ConfigurationService.comments_url))
+  def get_new_comments(pages = 1, url = ConfigurationService.comments_url)
+    parser = EntryPageParser.new(agent.get(url))
     comments = []
     pages.times do
       lines = parser.get_lines
@@ -47,7 +47,7 @@ class CommentService
     voting = VotingInfoParser.new(element.search("td/center/a"), header).parse
     user_info = UserInfoParser.new(header).parse
     reply_link = element.search("td[@class='default']/p//u//a").first
-    reply_url = reply_link['href'] if reply_link       
+    reply_url = reply_link['href'] if reply_link     
     return Comment.new(text, voting, user_info, reply_url)
   end
 

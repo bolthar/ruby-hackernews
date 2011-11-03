@@ -15,4 +15,8 @@ class User
     return LoginService.new.logout
   end
   
+  def submissions(pages = 1)
+    return UserInfoService.new.submissions(@name, pages)
+  end
+  
 end

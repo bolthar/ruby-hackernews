@@ -12,5 +12,9 @@ class CommentsInfo
   def id  
     return page[/\d+/]
   end
+  
+  def url
+    return page
+  end
 
 end

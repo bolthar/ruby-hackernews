@@ -45,6 +45,10 @@ class Entry
   def id
     return @comments_info ? @comments_info.id : nil
   end
+  
+  def comments_url
+    return @comments_info ? ConfigurationService.base_url + @comments_info.url : nil
+  end
 
   def comments_count
     return @comments_info.count

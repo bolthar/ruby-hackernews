@@ -27,7 +27,7 @@ class EntryService
   def get_jobs(pages = 1)
     return get_entries(pages, ConfigurationService.jobs_url)
   end
-
+  
   def submit(*args)
     require_authentication
     form = agent.get(ConfigurationService.submit_url).forms.first

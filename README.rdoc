@@ -2,7 +2,7 @@
 
 An API over Hacker News
 
-![status](http://stillmaintained.com/bolthar/ruby-hackernews.png)
+http://stillmaintained.com/bolthar/ruby-hackernews.png
 
 == Requirements
 

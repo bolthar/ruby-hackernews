@@ -1,4 +1,3 @@
-
 class Entry
 
   attr_reader :number
@@ -51,7 +50,7 @@ class Entry
   end
 
   def comments_count
-    return @comments_info.count
+    return @comments_info.count unless @comments_info.nil?
   end
 
   def write_comment(text)

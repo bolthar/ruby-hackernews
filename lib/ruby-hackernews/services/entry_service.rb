@@ -28,11 +28,17 @@ class EntryService
     return get_entries(pages, ConfigurationService.jobs_url)
   end
   
-  def submit(*args)
+  def submit(title, url)
     require_authentication
     form = agent.get(ConfigurationService.submit_url).forms.first
-    submit_link(form, args[0], args[1]) if args.length == 2
-    submit_question(form, args[0]) if args.length == 1
+    submit_link(form, title, url)
+    return true
+  end
+
+  def ask(title, text)
+    require_authentication
+    form = agent.get(ConfigurationService.submit_url).forms.first
+    submit_question(form, title, text)
     return true
   end
 
@@ -43,7 +49,8 @@ class EntryService
     form.submit
   end
 
-  def submit_question(form, text)
+  def submit_question(form, title, text)
+    form.t = title
     form.x = text
     form.submit
   end

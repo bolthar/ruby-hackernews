@@ -3,7 +3,6 @@ class LoginService
   include MechanizeContext
 
   def login(username, password)
-    raise "You are logged in already - logout first." if authenticated?
     page = agent.get(ConfigurationService.base_url)
     login_url = page.search(".pagetop/a").last['href'].sub("/","")
     login_page = agent.get(ConfigurationService.base_url + login_url)

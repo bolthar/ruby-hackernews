@@ -57,8 +57,12 @@ class Entry
     return CommentService.new.write_comment(@comments_info.page, text)
   end
 
-  def self.submit(*args)
-    return EntryService.new.submit(*args)
+  def self.submit(title, url)
+    return EntryService.new.submit(title, url)
+  end
+
+  def self.ask(title, text)
+    return EntryService.new.ask(title, text)
   end
 
   def upvote

@@ -14,6 +14,10 @@ class User
   def logout
     return LoginService.new.logout
   end
+
+  def signup(password)
+    return SignupService.new.signup(@name, password)
+  end
   
   def submissions(pages = 1)
     return UserInfoService.new.submissions(@name, pages)

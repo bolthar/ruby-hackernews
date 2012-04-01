@@ -1,8 +1,3 @@
-= NOTICE
-
-My account on HN (http://news.ycombinator.com/threads?id=andreadallera) has been banned. Here's a discussion about why (http://news.ycombinator.com/item?id=3642719). Take your own conclusions. Personally, I won't be visiting HN anymore. I just wanted to give you all a heads-up about how things are run over there.
-Anyway, these APIs will still be maintained - *I* am certainly not the one that wants to decide what's good or what's not in your place.
-= ruby-hackernews
 
 An API over Hacker News
 

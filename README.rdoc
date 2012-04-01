@@ -1,4 +1,3 @@
-
 An API over Hacker News
 
 http://stillmaintained.com/bolthar/ruby-hackernews.png
@@ -52,12 +51,12 @@ Each Entry instance has the following data:
 
 After you've logged in (see below) you can do the following
 
-    entry.upvote                     # votes the entry
-    entry.write_comment("mycomment") # adds a comment to the entry
-    Entry.submit("mytitle", "myurl") # submit a new link
-    Entry.submit("myquestion")       # submit a new question (ask HN)
+    entry.upvote                                # votes the entry
+    entry.write_comment("mycomment")            # adds a comment to the entry
+    Entry.submit("mytitle", "myurl")            # submit a new link
+    Entry.submit("myquestion", "question text") # submit a new question 
 
-    user.submissions.first.comments_url
+    user.submissions.first.comments_url         # returns the url to the current user's comments
 
 == Comments
 
@@ -113,6 +112,12 @@ Then, you log in with:
 
     user.login("password")
 
+Or, you can create a new use with that name:
+
+    user.signup("password") # don't abuse this!
+
+You will be also logged in with the new user. So, no need to call user#login after user#signup.
+
 You can log out with:
 
     user.logout
@@ -132,7 +137,6 @@ Will return the HN comment url of the last submitted story of that user
 == TO DO
 
     Get user info (comments, saved)
-    Create account
     Change user info/settings
 
 == THANKS TO

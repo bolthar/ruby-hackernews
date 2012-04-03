@@ -37,6 +37,10 @@ class Entry
     return EntryService.new.get_jobs(pages)
   end
 
+  def self.find(id)
+    return EntryService.new.find_by_id(id)
+  end
+
   def time
     return @time.time
   end

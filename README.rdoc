@@ -15,7 +15,13 @@ then, in your script:
 
     require 'ruby-hackernews'
 
-before using it.
+before using it. If you want to include the namespace (RubyHackernews), add
+
+    include RubyHackernews
+
+otherwise, you'll have to access the gem's classes adding the module, like this:
+
+    RubyHackernews::Entry.all
 
 == Entries
 

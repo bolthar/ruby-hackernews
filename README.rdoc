@@ -33,6 +33,10 @@ There are methods for getting specific entry types:
     Entry.newest    # gets the first page of new links (new)
     Entry.jobs      # gets the first page of job offerts (jobs)
 
+You can also get a single entry by its ID:
+
+    Entry.find(3102321) # gets that specific entry (warning: number will be 0!)
+
 Each Entry instance has the following data:
 
     entry = Entry.all.first # gets the top entry on the mainpage

@@ -16,6 +16,12 @@ class EntryService
     return entry_infos
   end
 
+  def find_by_id(id)
+    page = agent.get(ConfigurationService.base_url + "item?id=#{id}")
+    lines = page.search("table")[2].search("tr")
+    return EntryParser.new(lines[0], lines[1]).parse
+  end
+
   def get_new_entries(pages = 1)
     return get_entries(pages, ConfigurationService.new_url)
   end

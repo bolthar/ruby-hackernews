@@ -7,8 +7,17 @@ class EntryParser
   end
 
   def parse
-    number   = @first_line.search("[@class='title']")[0].inner_html.sub(".","").to_i
-    link     = LinkInfoParser.new(@first_line.search("[@class='title']")[1]).parse
+    first_line_title = @first_line.search("[@class='title']")
+    number_segment = nil
+    link_segment = nil
+    if(first_line_title.length > 1)
+      number_segment = first_line_title[0]
+      link_segment = first_line_title[1]
+    else
+      link_segment = first_line_title[0]
+    end
+    number   = number_segment.inner_html.sub(".","").to_i if number_segment
+    link     = LinkInfoParser.new(link_segment).parse
     voting   = VotingInfoParser.new(@first_line.search("td/center/a"), @second_line.search("[@class='subtext']")[0]).parse
     user     = UserInfoParser.new(@second_line.search("[@class='subtext']")[0]).parse
     comments = CommentsInfoParser.new(@second_line.search("[@class='subtext']")[0]).parse

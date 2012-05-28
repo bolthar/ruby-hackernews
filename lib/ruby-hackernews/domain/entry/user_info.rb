@@ -1,12 +1,15 @@
+module RubyHackernews
 
-class UserInfo
+  class UserInfo
 
-  attr_reader :name
-  attr_reader :page
+    attr_reader :name
+    attr_reader :page
 
-  def initialize(name, page)
-    @name = name
-    @page = page
+    def initialize(name, page)
+      @name = name
+      @page = page
+    end
+
   end
-
-end
+ 
+end  

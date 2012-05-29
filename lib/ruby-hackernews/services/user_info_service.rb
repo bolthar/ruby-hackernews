@@ -14,9 +14,8 @@ class UserInfoService
   end
   
   ##This doesn't work, need a new commentService to handle the user comment page
-  def comments(username, pages = 1)
-    page_url = ConfigurationService.base_url + 'threads?id=' + username
-    return CommentService.new.get_new_comments(pages,page_url)    
+  def comments(user)
+    return CommentService.new.get_user_comments(user)    
   end
     
 end

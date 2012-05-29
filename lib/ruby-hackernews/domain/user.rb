@@ -28,7 +28,7 @@ class User
   end
   
   def comments(pages = 1)
-    return UserInfoService.new.comments(@name, pages)
+    return UserInfoService.new.comments(self)
   end
   
 end

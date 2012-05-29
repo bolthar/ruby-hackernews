@@ -3,11 +3,22 @@ class CommentService
   include MechanizeContext
 
   def get_comments(page_url)
+    page = agent.get(page_url)
+    table = page.search("table")[3]
+    return get_comments_entities(table)
+  end
+
+  def get_user_comments(user)
+    page = agent.get(ConfigurationService.base_url + "threads?id=#{user.name}")
+    table = page.search("table")[2]
+    return get_comments_entities(table)
+  end
+
+  def get_comments_entities(table)
     comments = []
     last   = comments
     current_level = -1
-    page = agent.get(page_url)
-    page.search("//table")[3].search("table/tr").select do |tr|
+    table.search("table/tr").select do |tr|
       tr.search("span.comment").inner_html != "[deleted]"
     end.each do |tr|
       comment = parse_comment(tr)

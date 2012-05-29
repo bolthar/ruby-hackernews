@@ -1,34 +1,38 @@
 
-class User
+module RubyHackernews
 
-  attr_reader :name
+  class User
 
-  def initialize(name)
-    @name = name
-  end
+    attr_reader :name
 
-  def login(password)
-    return LoginService.new.login(@name, password)
-  end
+    def initialize(name)
+      @name = name
+    end
 
-  def logout
-    return LoginService.new.logout
-  end
+    def login(password)
+      return LoginService.new.login(@name, password)
+    end
 
-  def signup(password)
-    return SignupService.new.signup(@name, password)
-  end
+    def signup(password)
+      return SignupService.new.signup(@name, password)
+    end
+    
+    def submissions(pages = 1)
+      return UserInfoService.new.submissions(@name, pages)
+    end
+    
+    def saved(pages = 1)
+      return UserInfoService.new.saved(@name, pages)
+    end
   
-  def submissions(pages = 1)
-    return UserInfoService.new.submissions(@name, pages)
+    def logout
+      return LoginService.new.logout
+    end
+
+    def comments(pages = 1)
+      return UserInfoService.new.comments(@name, pages)
+    end
+    
   end
-  
-  def saved(pages = 1)
-    return UserInfoService.new.saved(@name, pages)
-  end
-  
-  def comments(pages = 1)
-    return UserInfoService.new.comments(self)
-  end
-  
-end
+
+end  

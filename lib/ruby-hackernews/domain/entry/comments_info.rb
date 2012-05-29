@@ -1,20 +1,23 @@
+module RubyHackernews
 
-class CommentsInfo
+  class CommentsInfo
 
-  attr_accessor :count
-  attr_reader :page
+    attr_accessor :count
+    attr_reader :page
 
-  def initialize(count, page)
-    @count = count
-    @page  = page
-  end
+    def initialize(count, page)
+      @count = count
+      @page  = page
+    end
 
-  def id  
-    return page[/\d+/]
-  end
-  
-  def url
-    return page
+    def id  
+      return page[/\d+/]
+    end
+    
+    def url
+      return page
+    end
+
   end
 
 end

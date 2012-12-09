@@ -3,8 +3,7 @@ module RubyHackernews
   class CommentService
     include MechanizeContext
 
-    def get_comments(page_url)
-      page = agent.get(page_url)
+    def get_comments(page)
       table = page.search("table")[3]
       return get_comments_entities(table)
     end
@@ -17,20 +16,23 @@ module RubyHackernews
 
     def get_comments_entities(table)
       comments = []
-      last   = comments
-      current_level = -1
+      target   = comments
+      current_level = 0
       table.search("table/tr").select do |tr|
         tr.search("span.comment").inner_html != "[deleted]"
       end.each do |tr|
         comment = parse_comment(tr)
         level = tr.search("img[@src='http://ycombinator.com/images/s.gif']").first['width'].to_i / 40
         difference = current_level - level
-        target = last
         (difference + 1).times do
-          target = target.parent || comments
+          target = target.kind_of?(Comment) && target.parent ? target.parent : comments
         end
-        return comments
+        current_level = level
+        target << comment
+        target = comment
       end
+      return comments
+    end
 
     def get_new_comments(pages = 1, url = ConfigurationService.comments_url)
       parser = EntryPageParser.new(agent.get(url))
@@ -67,4 +69,5 @@ module RubyHackernews
       return true
     end
 
+  end
 end  

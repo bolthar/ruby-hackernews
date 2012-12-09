@@ -14,11 +14,19 @@ module RubyHackernews
       @user     = user    
       @time     = time
       @comments_info = comments
+      @cache    = PageFetcher.new(@comments_info.page)
+    end
+
+    def text
+      unless @text
+        @text = TextService.new.get_text(@cache.page)
+      end
+      return @text
     end
 
     def comments
       unless @comments
-        @comments = CommentService.new.get_comments(@comments_info.page)
+        @comments = CommentService.new.get_comments(@cache.page)
       end
       return @comments
     end

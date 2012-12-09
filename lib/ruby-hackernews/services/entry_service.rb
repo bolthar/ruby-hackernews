@@ -20,7 +20,7 @@ module RubyHackernews
     def find_by_id(id)
       page = agent.get(ConfigurationService.base_url + "item?id=#{id}")
       lines = page.search("table")[2].search("tr")
-      return EntryParser.new(lines[0], lines[1]).parse
+      return EntryParser.new(lines[0], lines[1], lines[3]).parse
     end
 
     def get_new_entries(pages = 1)

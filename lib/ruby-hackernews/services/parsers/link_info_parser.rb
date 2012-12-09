@@ -13,11 +13,7 @@ module RubyHackernews
       site_element = @element.search("span")
       site = site_element.inner_html.sub("(","").sub(")","").strip if site_element.any?
       
-      if link_text == nil
-        return LinkInfo.new(title, link, site)
-      else
-        return LinkInfo.new(title, link, site, link_text)
-      end
+      return LinkInfo.new(title, link, site, link_text)
     end
 
   end

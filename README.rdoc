@@ -59,6 +59,9 @@ Each Entry instance has the following data:
 
     entry.time         # the elapsed time from submission
 
+    entry.text         # the text of the submission (ask/jobs only)
+                       # NOTE: it will fetch the inner page 
+
 After you've logged in (see below) you can do the following
 
     entry.upvote                                # votes the entry

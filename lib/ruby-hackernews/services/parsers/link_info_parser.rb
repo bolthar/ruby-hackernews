@@ -2,8 +2,9 @@ module RubyHackernews
 
   class LinkInfoParser
 
-    def initialize(link_element)
-      @element = link_element
+    def initialize(link_element, link_text = nil)
+      @element   = link_element
+      @link_text = link_text
     end
 
     def parse
@@ -11,7 +12,8 @@ module RubyHackernews
       title  = @element.search("a")[0].inner_html
       site_element = @element.search("span")
       site = site_element.inner_html.sub("(","").sub(")","").strip if site_element.any?
-      return LinkInfo.new(title, link, site)
+      
+      return LinkInfo.new(title, link, site, link_text)
     end
 
   end

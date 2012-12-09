@@ -2,9 +2,10 @@ module RubyHackernews
 
   class EntryParser
 
-    def initialize(first_line, second_line)
+    def initialize(first_line, second_line, third_line = nil)
       @first_line  = first_line
       @second_line = second_line
+      @third_line  = third_line
     end
 
     def parse
@@ -18,7 +19,7 @@ module RubyHackernews
         link_segment = first_line_title[0]
       end
       number   = number_segment.inner_html.sub(".","").to_i if number_segment
-      link     = LinkInfoParser.new(link_segment).parse
+      link     = LinkInfoParser.new(link_segment, third_line).parse
       voting   = VotingInfoParser.new(@first_line.search("td/center/a"), @second_line.search("[@class='subtext']")[0]).parse
       user     = UserInfoParser.new(@second_line.search("[@class='subtext']")[0]).parse
       comments = CommentsInfoParser.new(@second_line.search("[@class='subtext']")[0]).parse

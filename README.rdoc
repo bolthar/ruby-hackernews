@@ -161,3 +161,4 @@ Will return the HN comment url of the last submitted story of that user
 - Josh Ellington ( http://github.com/joshellington ) for reporting a bug about job entries
 - Wayne ( http://github.com/BlissOfBeing ) for adding User.submissions, Entry.comments_url and cleaning up the Rakefile
 - Daniel Da Cunha ( http://github.com/ddacunha ) for a fix on Entry#comments_count
+- Nathan Campos ( http://github.com/nathanpc) for adding #text to Entry

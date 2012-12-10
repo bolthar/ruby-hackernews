@@ -9,12 +9,17 @@ module RubyHackernews
 
     attr_accessor :parent
 
-    def initialize(text, voting, user_info, reply_link)
+    def initialize(text, voting, user_info, reply_link, absolute_link)
       @text = text
       @voting = voting
       @user = user_info
       @reply_link = reply_link
+      @absolute_link = absolute_link
       @children = []
+    end
+
+    def id
+      return @absolute_link.split("=")[1].to_i
     end
 
     def <<(comment)
@@ -36,6 +41,10 @@ module RubyHackernews
 
     def self.newest(pages = 1)
       return CommentService.new.get_new_comments(pages)
+    end
+
+    def self.find(id)
+      return CommentService.new.find_by_id(id)
     end
 
     def reply(text)

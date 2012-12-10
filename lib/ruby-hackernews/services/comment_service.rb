@@ -17,6 +17,7 @@ module RubyHackernews
     def find_by_id(id)
       page = agent.get(ConfigurationService.base_url + "item?id=#{id}")
       comment = parse_comment(page.search("table")[2].search("tr").first)
+      comment.instance_variable_set(:@absolute_link, "item?id=#{id}")
       get_comments_entities(page.search("table")[3]).each do |c|
         comment << c
       end

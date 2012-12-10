@@ -77,6 +77,11 @@ You get an entry's comments with:
 
     entry.comments
 
+You can also get a specific comment by id with:
+
+    Comment.find("1234") # returns the comments with id 1234,
+                         # and its subcomments.
+
 Note that the method above will send a request to HN. If you just need the comments' count or url, you can instead use:
 
     entry.comments_count
@@ -96,6 +101,7 @@ Each Comment instance has the following data:
 
     comment = Entry.all.first.comments.first # gets the first comment of the first entry on HN's main page
 
+    comment.id             # comment's unique identifier
     comment.text           # comment's body
     comment.user.name      # poster's user name on HN
     comment.voting.score   # comment's score

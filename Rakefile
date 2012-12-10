@@ -8,7 +8,7 @@ require 'rake/testtask'
 
 spec = Gem::Specification.new do |s|
   s.name = 'ruby-hackernews'
-  s.version = '1.3.1'
+  s.version = '1.3.2'
   s.add_dependency('require_all', '>= 1.1.0')
   s.add_dependency('mechanize', '>= 1.0.0')
   s.has_rdoc = false

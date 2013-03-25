@@ -1,4 +1,6 @@
 
+require "ruby-hackernews/version"
+
 require 'rubygems'
 require 'mechanize'
 

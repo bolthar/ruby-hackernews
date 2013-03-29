@@ -9,17 +9,26 @@ module RubyHackernews
 
     attr_accessor :parent
 
-    def initialize(text, voting, user_info, reply_link, absolute_link)
+    def initialize(text, voting, user_info, reply_link, absolute_link, parent_link)
       @text = text
       @voting = voting
       @user = user_info
       @reply_link = reply_link
       @absolute_link = absolute_link
+      @parent_link = parent_link
       @children = []
     end
 
     def id
       return @absolute_link.split("=")[1].to_i
+    end
+
+    def parent_id
+      if parent
+        parent.id
+      elsif @parent_link
+        @parent_link[/\d+/].to_i
+      end
     end
 
     def <<(comment)

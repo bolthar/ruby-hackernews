@@ -76,7 +76,9 @@ module RubyHackernews
       reply_url = reply_link['href'] if reply_link
       absolute_link_group = header.search("a")
       absolute_url = absolute_link_group.count == 2 ? absolute_link_group[1]['href'] : nil
-      return Comment.new(text, voting, user_info, reply_url, absolute_url)
+      parent_link = header.search("a[text()*='parent']").first
+      parent_url = parent_link['href'] if parent_link
+      return Comment.new(text, voting, user_info, reply_url, absolute_url, parent_url)
     end
 
     def write_comment(page_url, comment)

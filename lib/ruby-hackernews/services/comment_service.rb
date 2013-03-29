@@ -65,9 +65,9 @@ module RubyHackernews
     end
 
     def parse_comment(element)
-      text = ""
+      text_html = ""
       element.search("span.comment").first.children.each do |ch|
-        text = ch.inner_html.gsub(/<.{1,2}>/,"")
+        text_html = ch.inner_html
       end
       header = element.search("span.comhead").first
       voting = VotingInfoParser.new(element.search("td/center/a"), header).parse
@@ -78,7 +78,7 @@ module RubyHackernews
       absolute_url = absolute_link_group.count == 2 ? absolute_link_group[1]['href'] : nil
       parent_link = header.search("a[text()*='parent']").first
       parent_url = parent_link['href'] if parent_link
-      return Comment.new(text, voting, user_info, reply_url, absolute_url, parent_url)
+      return Comment.new(text_html, voting, user_info, reply_url, absolute_url, parent_url)
     end
 
     def write_comment(page_url, comment)

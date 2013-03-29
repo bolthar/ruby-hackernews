@@ -3,14 +3,14 @@ module RubyHackernews
   class Comment
     include Enumerable
 
-    attr_reader :text
+    attr_reader :text_html
     attr_reader :voting
     attr_reader :user
 
     attr_accessor :parent
 
-    def initialize(text, voting, user_info, reply_link, absolute_link, parent_link)
-      @text = text
+    def initialize(text_html, voting, user_info, reply_link, absolute_link, parent_link)
+      @text_html = text_html
       @voting = voting
       @user = user_info
       @reply_link = reply_link
@@ -29,6 +29,10 @@ module RubyHackernews
       elsif @parent_link
         @parent_link[/\d+/].to_i
       end
+    end
+
+    def text
+      @text ||= text_html.gsub(/<.{1,2}>/, "")
     end
 
     def <<(comment)

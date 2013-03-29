@@ -4,8 +4,13 @@ module RubyHackernews
     include MechanizeContext
 
     def get_entries(pages = 1, url = ConfigurationService.base_url)
+      get_entries_with_extra(pages, url)[:entries]
+    end
+
+    def get_entries_with_extra(pages = 1, url = ConfigurationService.base_url)
       parser = EntryPageParser.new(agent.get(url))
       entry_infos = []
+      next_url = nil
       pages.times do
         lines = parser.get_lines
         (lines.length / 2).times do
@@ -14,7 +19,7 @@ module RubyHackernews
         next_url = parser.get_next_url || break
         parser = EntryPageParser.new(agent.get(next_url))
       end
-      return entry_infos
+      return {:entries => entry_infos, :next_url => next_url}
     end
 
     def find_by_id(id)

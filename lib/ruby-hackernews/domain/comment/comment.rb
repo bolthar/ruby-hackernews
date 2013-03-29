@@ -43,6 +43,12 @@ module RubyHackernews
       return CommentService.new.get_new_comments(pages)
     end
 
+    def self.newest_with_extra(pages = 1, url = nil)
+      args = [pages]
+      args << url unless url.nil?
+      return CommentService.new.get_new_comments_with_extra *args
+    end
+
     def self.find(id)
       return CommentService.new.find_by_id(id)
     end

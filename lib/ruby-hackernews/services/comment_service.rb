@@ -46,8 +46,13 @@ module RubyHackernews
     end
 
     def get_new_comments(pages = 1, url = ConfigurationService.comments_url)
+      get_new_comments_with_extra(pages,url)[:comments]
+    end
+
+    def get_new_comments_with_extra(pages = 1, url = ConfigurationService.comments_url)
       parser = EntryPageParser.new(agent.get(url))
       comments = []
+      next_url = nil
       pages.times do
         lines = parser.get_lines
         lines.each do |line|
@@ -56,7 +61,7 @@ module RubyHackernews
         next_url = parser.get_next_url || break
         parser = EntryPageParser.new(agent.get(next_url))
       end
-      return comments
+      return {:comments => comments, :next_url => next_url}
     end
 
     def parse_comment(element)

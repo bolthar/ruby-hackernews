@@ -28,11 +28,12 @@ module RubyHackernews
       comments = []
       target   = comments
       current_level = 0
-      table.search("table/tr").select do |tr|
+      trs = table.search("table/tr").select do |tr|
         tr.search("span.comment").inner_html != "[deleted]"
-      end.each do |tr|
+      end
+      trs.each do |tr|
         comment = parse_comment(tr)
-        level = tr.search("img[@src='http://ycombinator.com/images/s.gif']").first['width'].to_i / 40
+        level = tr.search("img[@src='s.gif']").first['width'].to_i / 40
         difference = current_level - level
         (difference + 1).times do
           target = target.kind_of?(Comment) && target.parent ? target.parent : comments
@@ -67,7 +68,7 @@ module RubyHackernews
       voting = VotingInfoParser.new(element.search("td/center/a"), header).parse
       user_info = UserInfoParser.new(header).parse
       reply_link = element.search("td[@class='default']/p//u//a").first
-      reply_url = reply_link['href'] if reply_link     
+      reply_url = reply_link['href'] if reply_link
       absolute_link_group = header.search("a")
       absolute_url = absolute_link_group.count == 2 ? absolute_link_group[1]['href'] : nil
       return Comment.new(text, voting, user_info, reply_url, absolute_url)

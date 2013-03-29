@@ -4,7 +4,7 @@ module RubyHackernews
   describe TimeInfo do
 
     before :all do
-      TimeInfo.instance_eval do
+      class RubyHackernews::TimeInfo
         DUMMY = 10
       end
     end
@@ -26,19 +26,19 @@ module RubyHackernews
     describe :time do
 
       it "should return right amount when passed seconds" do
-        TimeInfo.new(15, "seconds").time.should == Time.at(15)
+        TimeInfo.new(15, "seconds").time.round.should == (Time.now - 15).round
       end
 
       it "should return right amount when passed minutes" do
-        TimeInfo.new(24, "minutes").time.should == Time.at(24*60)
+        TimeInfo.new(24, "minutes").time.round.should == (Time.now - 24*60).round
       end
 
       it "should return right amount when passed hours" do
-        TimeInfo.new(3, "hours").time.should == Time.at(3*3600)
+        TimeInfo.new(3, "hours").time.round.should == (Time.now - 3*3600).round
       end
 
       it "should return right amount when passed days" do
-        TimeInfo.new(16, "days").time.should == Time.at(16*86400)
+        TimeInfo.new(16, "days").time.round.should == (Time.now - 16*86400).round
       end
 
     end

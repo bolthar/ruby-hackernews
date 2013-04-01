@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../../../spec_helper')
+require 'spec_helper'
 require File.expand_path(File.dirname(__FILE__) + '/parser_helper')
 
 module RubyHackernews
@@ -43,7 +43,7 @@ module RubyHackernews
       it "should return an entry with correct time" do
         parser = EntryParser.new(@first_line, @second_line)
         entry  = parser.parse
-        entry.time.time.should == Time.at(3600*4)
+        entry.time.round.should == (Time.now - 3600*4).round
       end
 
     end

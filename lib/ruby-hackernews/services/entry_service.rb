@@ -39,7 +39,11 @@ module RubyHackernews
     def get_jobs(pages = 1)
       return get_entries(pages, ConfigurationService.jobs_url)
     end
-    
+
+    def get_shows(pages = 1)
+      return get_entries(pages, ConfigurationService.show_url)
+    end
+
     def submit(title, url)
       require_authentication
       form = agent.get(ConfigurationService.submit_url).forms.first
@@ -66,7 +70,7 @@ module RubyHackernews
       form.x = text
       form.submit
     end
-  
+
   end
 
 end

@@ -38,6 +38,8 @@ There are methods for getting specific entry types:
     Entry.questions # gets the first page of questions (ask NH)
     Entry.newest    # gets the first page of new links (new)
     Entry.jobs      # gets the first page of job offerts (jobs)
+    Entry.shows     # gets the first page of shows (show HN)
+    Entry.new_shows # gets the first page of new shows (show HN new)
 
 You can also get a single entry by its ID:
 
@@ -169,3 +171,4 @@ Will return the HN comment url of the last submitted story of that user
 - Wayne ( http://github.com/BlissOfBeing ) for adding User.submissions, Entry.comments_url and cleaning up the Rakefile
 - Daniel Da Cunha ( http://github.com/ddacunha ) for a fix on Entry#comments_count
 - Nathan Campos ( http://github.com/nathanpc) for adding #text to Entry
+- Girish Sonawane ( https://github.com/girishso) for adding Entry#shows and Entry#new_shows methods

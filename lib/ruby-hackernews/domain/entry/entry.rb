@@ -53,6 +53,14 @@ module RubyHackernews
       return EntryService.new.get_jobs(pages)
     end
 
+    def self.shows(pages = 1)
+      return EntryService.new.get_shows(pages)
+    end
+
+    def self.new_shows(pages = 1)
+      return EntryService.new.get_new_shows(pages)
+    end
+
     def self.find(id)
       return EntryService.new.find_by_id(id)
     end

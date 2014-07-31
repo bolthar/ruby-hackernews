@@ -22,6 +22,14 @@ module RubyHackernews
       return File.join(self.base_url, "jobs")
     end
 
+    def self.show_url
+      return File.join(self.base_url, "show")
+    end
+
+    def self.new_shows_url
+      return File.join(self.base_url, "shownew")
+    end
+
     def self.comments_url
       return File.join(self.base_url, "newcomments")
     end

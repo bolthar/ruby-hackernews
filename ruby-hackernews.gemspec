@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["andrea@andreadallera.com"]
   spec.description   = %q{An interface to Hacker News}
   spec.summary       = %q{An interface to Hacker News}
-  spec.homepage      = "http://github.com/blissofbeing/ruby-hackernews"
+  spec.homepage      = "http://github.com/bolthar/ruby-hackernews"
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }

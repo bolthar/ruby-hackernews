@@ -8,8 +8,7 @@ module RubyHackernews
 
     def get_lines
       lines = @page.search("//table")[2].search("tr").select do |tr|
-        tr['style'] !~ /height/ &&
-        tr.children.first.attributes.count != 0
+        tr['style'] !~ /height/
       end
       more_link = lines.last.search("a").first
       lines.pop if more_link && more_link.inner_html == "More"

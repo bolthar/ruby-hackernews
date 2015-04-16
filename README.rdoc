@@ -172,3 +172,4 @@ Will return the HN comment url of the last submitted story of that user
 - Daniel Da Cunha ( http://github.com/ddacunha ) for a fix on Entry#comments_count
 - Nathan Campos ( http://github.com/nathanpc) for adding #text to Entry
 - Girish Sonawane ( https://github.com/girishso) for adding Entry#shows and Entry#new_shows methods
+- Niels Van Aken ( https://github.com/nvaken ) for a bugfix in EntryPageParser

@@ -21,14 +21,14 @@ class ParserHelper
     return Nokogiri::HTML.fragment('<a id=up_1645686 href="vote?for=1645686&dir=up&whence=%6e%65%77%73"><img src="http://ycombinator.com/images/grayarrow.gif" border=0 vspace=3 hspace=2></a><a id=down_1645686 href="vote?for=1645686&dir=up&whence=%6e%65%77%73"><img src="http://ycombinator.com/images/grayarrow.gif" border=0 vspace=3 hspace=2></a>'
     ).children
   end
-  
+
   #username     : johnthedebs
   #user page    : user?id=johnthedebs
   #score        : 17
   #comments     : 2
   #comment_page : item?id=1645686
   def self.second_line
-    return Nokogiri::HTML.fragment('<td class="subtext"><span id=score_1645686>17 points</span> by <a href="user?id=johnthedebs">johnthedebs</a> 4 hours ago  | <a href="item?id=1645686">2 comments</a></td>')
+    return Nokogiri::HTML.fragment('<td class="subtext"><span class="score" id="score_1645686">17 points</span> by <a href="user?id=johnthedebs">johnthedebs</a> <a href="item?id=1645686">4 hours ago</a> | <a href="item?id=1645686">2 comments</a></td>')
   end
 
   #username     : johnthedebs
@@ -36,7 +36,7 @@ class ParserHelper
   #score        : 17
   #comment_page : item?id=1645686
   def self.second_line_no_comments_yet
-    return Nokogiri::HTML.fragment('<td class="subtext"><span id=score_1645686>17 points</span> by <a href="user?id=johnthedebs">johnthedebs</a> 4 hours ago  | <a href="item?id=1645686">discuss</a></td>')
+    return Nokogiri::HTML.fragment('<td colspan="2"></td><td class="subtext"><span class="score" id="score_1645686">17 points</span> by <a href="user?id=johnthedebs">johnthedebs</a> <a href="item?id=1645686">4 hours ago</a> | <a href="item?id=1645686">discuss</a></td>')
   end
 
   #username     : johnthedebs
@@ -64,14 +64,14 @@ class ParserHelper
   end
 
   def self.second_line_full
-    return Nokogiri::HTML('<tr><td colspan=2></td><td class="subtext"><span id=score_1645745>59 points</span> by <a href="user?id=dhotson">dhotson</a> 4 hours ago  | <a href="item?id=1645745">5 comments</a></td></tr>')
+    Nokogiri::HTML.fragment('<tr><td colspan=2></td><td class="subtext"><span class="score" id="score_1645745">59 points</span> by <a href="user?id=dhotson">dhotson</a> <a href="item?id=1645745">4 hours ago</a> | <a href="item?id=1645745">5 comments</a></td></tr>')
   end
 
   def self.full_page
     File.open(File.join(File.dirname(__FILE__), 'hn_test_page.html'), 'r') do |file|
       return Nokogiri::HTML(file)
     end
-    
+
   end
 
 end

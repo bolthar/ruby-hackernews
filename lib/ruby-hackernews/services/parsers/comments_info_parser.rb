@@ -2,18 +2,27 @@ module RubyHackernews
 
   class CommentsInfoParser
 
-    def initialize(comments_element)
-      @element = comments_element.search("a")[1]
+    def initialize(second_line)
+      @second_line = second_line
     end
 
     def parse
-      comments_info = nil
-      if @element && @element['href'] =~ /id/
-        comments      = @element.inner_html.split[0].to_i
-        comments_page = @element['href']
-        comments_info = CommentsInfo.new(comments, comments_page)
-      end
-      return comments_info
+      return unless comments_link
+
+      comments      = comments_link.text.split[0].to_i
+      comments_page = comments_link['href']
+
+      CommentsInfo.new(comments, comments_page)
+    end
+
+    private
+
+    def comments_link
+      links.find { |link| link.text =~ /comment|discuss/ }
+    end
+
+    def links
+      @second_line.css('a')
     end
 
   end

@@ -1,10 +1,11 @@
 require 'spec_helper'
+require File.join(File.dirname(__FILE__), 'parser_helper')
 
 module RubyHackernews
   describe TimeInfoParser do
 
     before :each do
-      @parser = TimeInfoParser.new(stub(:text => " 4 hours ago  | "))
+      @parser = TimeInfoParser.new(ParserHelper.second_line)
     end
 
     describe :parse do
@@ -22,4 +23,3 @@ module RubyHackernews
     end
   end
 end
-

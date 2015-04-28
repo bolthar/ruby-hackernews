@@ -65,10 +65,7 @@ module RubyHackernews
     end
 
     def parse_comment(element)
-      text_html = ""
-      element.search("span.comment").first.children.each do |ch|
-        text_html = ch.inner_html
-      end
+      text_html = element.search("span.comment").first.search("font").children.map { |x| x.inner_text }.join("\n")
       header = element.search("span.comhead").first
       voting = VotingInfoParser.new(element.search("td/center/a"), header).parse
       user_info = UserInfoParser.new(header).parse

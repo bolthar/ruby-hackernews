@@ -8,25 +8,6 @@ module RubyHackernews
       MechanizeContext.send(:class_variable_set, :@@default, nil)
     end
 
-    describe "create" do
-
-      it "should instantiate class variable on use" do
-        MechanizeContext.create()
-        MechanizeContext.send(:class_variable_get, :@@contexts).should_not be_nil
-      end
-
-      it "should assign new agent to hash[key]" do
-        MechanizeContext.create(:test_key)
-        MechanizeContext.send(:class_variable_get, :@@contexts)[:test_key].should be_kind_of Mechanize
-      end
-
-      it "should assign new agent to default if no key passed" do
-        MechanizeContext.create
-        MechanizeContext.send(:class_variable_get, :@@contexts)[:default].should be_kind_of Mechanize
-      end
-
-    end
-
     describe "agent=" do
 
       it "should set @@default as passed key" do

@@ -175,3 +175,4 @@ Will return the HN comment url of the last submitted story of that user
 - Niels Van Aken ( https://github.com/nvaken ) for a bugfix in EntryPageParser
 - Pedro Lambert ( https://github.com/p-lambert ) for fixing bugs and improving structure of CommentInfoParser, TimeInfoParser and UserInfoParser
 - FreedomBen ( https://github.com/FreedomBen ) for fixing a typo in the readme
+- Davide Santangelo ( https://github.com/davidesantangelo ) for reporting a bug related to jobs and show HN entries

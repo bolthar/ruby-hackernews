@@ -14,7 +14,11 @@ module RubyHackernews
       @user     = user    
       @time     = time
       @comments_info = comments
-      @cache    = PageFetcher.new(@comments_info.page) if @comments_info
+      if @comments_info
+        @cache = PageFetcher.new(@comments_info.page)
+      else
+        @cache = PageFetcher.new(@link.href)
+      end
     end
 
     def text

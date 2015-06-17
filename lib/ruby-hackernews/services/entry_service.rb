@@ -13,6 +13,9 @@ module RubyHackernews
       next_url = nil
       pages.times do
         lines = parser.get_lines
+        while lines.first["class"] != "athing"
+          lines.shift
+        end
         (lines.length / 2).times do
           entry_infos << EntryParser.new(lines.shift, lines.shift).parse
         end

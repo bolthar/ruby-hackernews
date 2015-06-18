@@ -90,7 +90,7 @@ Note that the method above will send a request to HN. If you just need the comme
     
 and
   
-    entry.comment_url
+    entry.comments_url
 
 Either of which will not issue a request to HN's site. 
 

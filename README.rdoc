@@ -155,6 +155,8 @@ This will return a new Entry instance. For example:
     
 Will return the HN comment url of the last submitted story of that user
 
+Test on [RapidAPI](https://rapidapi.com/package/HackerNews/functions?utm_source=HackernewsGitHub&utm_medium=button)
+
 == TO DO
 
     Get user info (comments, saved)
